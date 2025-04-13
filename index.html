@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kurisu Live2D</title>
+  <style>
+    html, body { margin: 0; overflow: hidden; height: 100%; }
+    canvas { display: block; }
+  </style>
+<script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.2/dist/browser/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
+
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+
+(async function main() {
+  const app = new PIXI.Application({
+    view: document.getElementById("canvas"),
+    autoStart: true,
+    resizeTo: window
+  });
+
+  const model = await PIXI.live2d.Live2DModel.from("./Amadeus/amadeusV1.model3.json");
+  app.stage.addChild(model);
+ model.scale.set(0.25);
+ model.x = 300;
+      
+    })();
+
+
+  </script>
+</body>
+</html>
