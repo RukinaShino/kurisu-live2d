@@ -28,7 +28,16 @@
     app.stage.addChild(model);
   model.scale.set(0.2);
   //model.x = 300;
-        
+// 通知主页面：我已经加载完成啦！
+window.parent.postMessage({ type: "ready" }, "https://chatgpt.com");
+
+// 监听主页面发来的消息
+window.addEventListener("message", (event) => {
+  if (event.origin !== "https://chatgpt.com") return;
+  if (event.data.type === "ping") {
+    console.log("📡 收到主页面消息：", event.data.msg);
+  }
+});
       })();
 
 
